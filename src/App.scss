@@ -1,0 +1,15 @@
+.visual{
+	height:300px;
+	background-image: url(./bg.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.prd-list{
+	display: flex;
+	.item{
+		margin:0 20px;
+		border-radius:20px;
+		background-color: #f5f5f5;
+	}
+}
