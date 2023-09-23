@@ -15,7 +15,7 @@ function App() {
     <div className="App">
 		<Navbar expand="lg" className="bg-body-tertiary">
 			<Container>
-				<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+				<Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="me-auto">
@@ -28,7 +28,7 @@ function App() {
 
 		<Routes>
 			<Route path="/" element={<Main/>}></Route>
-			<Route path="/detail" element={<Detail shoes={shoes}/>}></Route>
+			<Route path="/detail/:id" element={<Detail shoes={shoes}/>}></Route>
 		</Routes>
 
 		

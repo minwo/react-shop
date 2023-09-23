@@ -18,6 +18,13 @@ let productInfo = [
 	  title : "Grey Yordan",
 	  content : "Born in the States",
 	  price : 130000
+	},
+  
+	{
+	  id : 3,
+	  title : "유양례",
+	  content : "코딩천재",
+	  price : 250000
 	}
 ] 
 
