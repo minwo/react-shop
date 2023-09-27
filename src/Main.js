@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import productInfo from './data.js';
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom';
+import axios from 'axios';	
 
 function Main(){
 	let [shoes, setShoes] = useState(productInfo);
@@ -12,6 +13,16 @@ function Main(){
 			<div className="prd-list">
 				<Cardlist shoes={shoes}/>
 			</div>
+			<button onClick={ () => {
+				axios.get('https://codingapple1.github.io/shop/data2.json')
+				.then((data) => {
+					setShoes(data.data)
+					console.log(data.data);
+				})
+				.catch( () => {
+					console.log('실패함');
+				})
+			}}>더 보기</button>
 		</>
 	)
 }
