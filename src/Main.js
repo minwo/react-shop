@@ -2,25 +2,36 @@ import { useState } from 'react';
 import productInfo from './data.js';
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 function Main(){
 	let [shoes, setShoes] = useState(productInfo);
+	let [dataPage, setDataPage] = useState(2);
+
+
+	const moreBtn = async () => {
+    	await axios.get("https://codingapple1.github.io/shop/data" + dataPage
+		+ ".json")
+		.then((result) => {
+			setShoes([...shoes, ...result.data]);
+			setDataPage(dataPage + 1);
+			console.log(shoes);
+		})
+		.catch(() => {
+			console.log('실패');
+			console.log(shoes);
+		})
+		// setShoes([...shoes, ...result.data]);
+		// setDataPage(dataPage + 1);
+		// console.log(result, result.data);
+	};
 
 	return(
 		<>
 			<div className="prd-list">
 				<Cardlist shoes={shoes}/>
 			</div>
-			<button onClick={ () => {
-				axios.get('https://codingapple1.github.io/shop/data2.json')
-				.then((data) => {
-					setShoes(data.data)
-					console.log(data.data);
-				})
-				.catch( () => {
-					console.log('실패함');
-				})
-			}}>더 보기</button>
+			<button onClick={moreBtn}>더 보기</button>
 		</>
 	)
 }
