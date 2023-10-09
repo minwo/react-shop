@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import Nav from 'react-bootstrap/Nav';
 
 function Detail(props) {
 	const { id } = useParams();
@@ -13,13 +14,16 @@ function Detail(props) {
 
 	// mount 됐을 때 
 	useEffect(() => {
-		const buttons = document.querySelectorAll('.btn');
-		const handleClick = (e) => console.log(1);
-		buttons.forEach(btn => btn.addEventListener('click', handleClick));
-	
-		return () => {
-		  buttons.forEach(btn => btn.removeEventListener('click', handleClick));
-		}
+		var tabs = document.querySelectorAll('.tabs-tab');
+
+		// 각 탭에 클릭 이벤트 리스너를 추가합니다.
+		tabs.forEach(function(tab, index) {
+			tab.addEventListener('click', function(e) {
+				e.preventDefault();
+
+				
+			});
+		});
 	  }, []);
 
 	// unmount 됐을 때
@@ -57,18 +61,19 @@ function Detail(props) {
 			</div>
 
 			<div className="tab-ui">
-				<div className="tab-ctr">
-					<a href="#" className="btn">Tab1</a>
-					<a href="#" className="btn">Tab2</a>
-					<a href="#" className="btn">Tab3</a>
+				<div className="tabs">
+					<div className="tabs-marker"></div>
+					<a href="#" className="tabs-tab">Tab1</a>
+					<a href="#" className="tabs-tab">Tab2</a>
+					<a href="#" className="tabs-tab">Tab3</a>
 				</div>
-				<div className="tab-layer">
+				<div className="tabpanel">
 					Tab1
 				</div>
-				<div className="tab-layer">
+				<div className="tabpanel">
 					Tab2
 				</div>
-				<div className="tab-layer">
+				<div className="tabpanel">
 					Tab3
 				</div>
 			</div>
