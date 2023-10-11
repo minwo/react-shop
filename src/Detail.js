@@ -1,9 +1,10 @@
+import { useEffect , useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import Nav from 'react-bootstrap/Nav';
+import Tabs from "./Tabs";
 
 function Detail(props) {
 	const { id } = useParams();
+	let [ tabClass , setTabClass ] = useState('type01');
 	let 찾은상품 = props.shoes.find((x) => x.id == id );
 	console.log(props.shoes);
 
@@ -14,17 +15,8 @@ function Detail(props) {
 
 	// mount 됐을 때 
 	useEffect(() => {
-		var tabs = document.querySelectorAll('.tabs-tab');
-
-		// 각 탭에 클릭 이벤트 리스너를 추가합니다.
-		tabs.forEach(function(tab, index) {
-			tab.addEventListener('click', function(e) {
-				e.preventDefault();
-
-				
-			});
-		});
-	  }, []);
+		
+	}, []);
 
 	// unmount 됐을 때
 	useEffect(() => {
@@ -60,23 +52,7 @@ function Detail(props) {
 				</div>
 			</div>
 
-			<div className="tab-ui">
-				<div className="tabs">
-					<div className="tabs-marker"></div>
-					<a href="#" className="tabs-tab">Tab1</a>
-					<a href="#" className="tabs-tab">Tab2</a>
-					<a href="#" className="tabs-tab">Tab3</a>
-				</div>
-				<div className="tabpanel">
-					Tab1
-				</div>
-				<div className="tabpanel">
-					Tab2
-				</div>
-				<div className="tabpanel">
-					Tab3
-				</div>
-			</div>
+			<Tabs className={tabClass} defualt={0}></Tabs>
 		</>
 	)
 }

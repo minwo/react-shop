@@ -81,17 +81,16 @@ a{
 	}
   }
   .tabpanels {
-	background-color: white;
-	border-radius: 0.5rem;
-	width: 100%;
-  }
-  .tabpanel {
-	padding: 1rem 1.25rem;
-	text-align: center;
-	min-height: 5rem;
-	display: grid;
-	place-content: center;
-	border-radius: 0.5rem;
+	  background-color: white;
+	  border-radius: 0.5rem;
+	  width: 100%;
+	}
+	.tabpanel {
+		display:none;
+		padding: 1rem 1.25rem;
+		min-height: 5rem;
+		place-content: center;
+		border-radius: 0.5rem;
 	&:focus-visible {
 	  outline: 3px solid rgb(17 21 36 / 50%);
 	}
@@ -102,5 +101,8 @@ a{
 	&.ui-enter-from {
 	  opacity: 0;
 	  transform: scale(0.98);
+	}
+	&.active{
+		display:block;
 	}
   }
