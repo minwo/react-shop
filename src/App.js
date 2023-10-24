@@ -6,6 +6,7 @@ import productInfo from './data.js';
 import { Route, Routes, link, useNavigate, Outlet } from 'react-router-dom';
 import Main from './Main';
 import Detail from './Detail';
+import Cart from './Cart';
 
 function App() {
 	let [shoes, setShoes] = useState(productInfo);
@@ -21,6 +22,7 @@ function App() {
 				<Nav className="me-auto">
 					<Nav.Link onClick={ () => { navigate('/') } }>Home</Nav.Link>
 					<Nav.Link onClick={() => { navigate('/Detail') }}>Detail</Nav.Link>
+					<Nav.Link onClick={() => { navigate('/Cart') }}>Cart</Nav.Link>
 				</Nav>
 				</Navbar.Collapse>
 			</Container>
@@ -29,6 +31,7 @@ function App() {
 		<Routes>
 			<Route path="/" element={<Main/>}></Route>
 			<Route path="/detail/:id" element={<Detail shoes={shoes}/>}></Route>
+			<Route path="/cart/" element={<Cart shoes={shoes}/>}></Route>
 		</Routes>
 
 		
