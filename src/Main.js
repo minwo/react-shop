@@ -10,8 +10,7 @@ function Main(){
 
 
 	const moreBtn = async () => {
-    	await axios.get("https://codingapple1.github.io/shop/data" + dataPage
-		+ ".json")
+		await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
 		.then((result) => {
 			setShoes([...shoes, ...result.data]);
 			setDataPage(dataPage + 1);
