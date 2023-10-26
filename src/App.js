@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { Button, Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import './App.scss';
-
-import productInfo from './data.js';
 import { Route, Routes, link, useNavigate, Outlet } from 'react-router-dom';
 import Main from './Main';
 import Detail from './Detail';
 import Cart from './Cart';
+import { useSelector, useDispatch } from 'react-redux';
+import { productInfo } from './store';
 
 function App() {
-	let [shoes, setShoes] = useState(productInfo);
 	let navigate = useNavigate();
+
+	let state = useSelector((state) => {
+		return state
+	})
+
+	let [shoes, setShoes] = useState(state.productInfo);
+
+	console.log(shoes);
 
   return (
     <div className="App">
@@ -21,7 +28,7 @@ function App() {
 				<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="me-auto">
 					<Nav.Link onClick={ () => { navigate('/') } }>Home</Nav.Link>
-					<Nav.Link onClick={() => { navigate('/Detail') }}>Detail</Nav.Link>
+					<Nav.Link onClick={() => { navigate('/Detail/0') }}>Detail</Nav.Link>
 					<Nav.Link onClick={() => { navigate('/Cart') }}>Cart</Nav.Link>
 				</Nav>
 				</Navbar.Collapse>

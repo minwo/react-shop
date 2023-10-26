@@ -1,28 +1,34 @@
 import { useState } from 'react';
-import productInfo from './data.js';
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { productInfo } from './store';
 
 function Main(){
-	let [shoes, setShoes] = useState(productInfo);
 	let [dataPage, setDataPage] = useState(2);
+	let state = useSelector((state) => {
+		return state
+	})
 
+	let [shoes, setShoes] = useState(state.productInfo);
+	console.log(state.productInfo);
 
 	const moreBtn = async () => {
-		await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
-		.then((result) => {
-			setShoes([...shoes, ...result.data]);
-			setDataPage(dataPage + 1);
-			console.log(shoes);
-		})
-		.catch(() => {
-			console.log('실패');
-			console.log(shoes);
-		})
+		// await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
+		// .then((result) => {
+		// 	setShoes([...shoes, ...result.data]);
+		// 	setDataPage(dataPage + 1);
+		// 	console.log(shoes);
+		// })
+		// .catch(() => {
+		// 	console.log('실패');
+		// 	console.log(shoes);
+		// })
 		// setShoes([...shoes, ...result.data]);
 		// setDataPage(dataPage + 1);
 		// console.log(result, result.data);
+		
 	};
 
 	return(

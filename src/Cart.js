@@ -1,37 +1,41 @@
 import { Table } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCount, msCount } from './store';
 
 function Cart(){
-	return(
-		<Table striped bordered hover>
-			<thead>
-				<tr>
-				<th>#</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Username</th>
+	let state = useSelector((state) => {
+		return state
+	})
+
+  let dispatch = useDispatch();
+	console.log(state);
+
+	return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+		{
+			state.cart.map(( a, idx ) => 
+				<tr key={ idx }>
+					<td>{ state.cart[idx].id }</td>
+					<td>{ state.cart[idx].name }</td>
+					<td>{ state.cart[idx].count }</td>
+          <td>
+            <button className='btn-plus' onClick={() => dispatch(addCount(idx))}>+</button>
+            <button className='btn-ms' onClick={() => dispatch(msCount(idx))}>-</button>
+          </td>
 				</tr>
-			</thead>
-			<tbody>
-				<tr>
-				<td>1</td>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-				</tr>
-				<tr>
-				<td>2</td>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-				</tr>
-				<tr>
-				<td>3</td>
-				<td colSpan={2}>Larry the Bird</td>
-				<td>@twitter</td>
-				</tr>
-			</tbody>
-		</Table>
-	)
+			)
+		}
+      </tbody>
+    </Table>
+  );
 }
 
 export default Cart;
