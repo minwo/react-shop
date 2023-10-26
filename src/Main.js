@@ -12,29 +12,35 @@ function Main(){
 	})
 
 	let [shoes, setShoes] = useState(state.productInfo);
-	console.log(state.productInfo);
+	let [prdCount, setCount ] = useState(3);
+	console.log(prdCount);
 
-	const moreBtn = async () => {
-		// await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
-		// .then((result) => {
-		// 	setShoes([...shoes, ...result.data]);
-		// 	setDataPage(dataPage + 1);
-		// 	console.log(shoes);
-		// })
-		// .catch(() => {
-		// 	console.log('실패');
-		// 	console.log(shoes);
-		// })
-		// setShoes([...shoes, ...result.data]);
-		// setDataPage(dataPage + 1);
-		// console.log(result, result.data);
+	const moreBtn = () => {
+		prdCount = setCount( prdCount + 3);
+		console.log(prdCount)
+	}
+
+	// const moreBtn = async () => {
+	// 	await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
+	// 	.then((result) => {
+	// 		setShoes([...shoes, ...result.data]);
+	// 		setDataPage(dataPage + 1);
+	// 		console.log(shoes);
+	// 	})
+	// 	.catch(() => {
+	// 		console.log('실패');
+	// 		console.log(shoes);
+	// 	})
+	// 	setShoes([...shoes, ...result.data]);
+	// 	setDataPage(dataPage + 1);
+	// 	console.log(result, result.data);
 		
-	};
+	// };
 
 	return(
 		<>
 			<div className="prd-list">
-				<Cardlist shoes={shoes}/>
+				<Cardlist shoes={shoes} prdCount={prdCount}/>
 			</div>
 			<button onClick={moreBtn}>더 보기</button>
 		</>
@@ -43,7 +49,7 @@ function Main(){
 
 function Cardlist(props){
 	
-	return props.shoes.map(function(obj, idx){
+	return props.shoes.slice(0, props.prdCount).map(function(obj, idx){
 		return(
 			<div className="item" key={obj.id}>
 				<Link to={`/detail/${props.shoes[idx].id}`}>
