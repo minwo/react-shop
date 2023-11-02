@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 let productInfo = createSlice({
   name : 'productInfo',
@@ -36,6 +36,9 @@ let cart = createSlice({
     },
     msCount(state, action){
       state[action.payload].count--
+    },
+    addItem(state, action){
+      state.push(action.payload);
     }
   }
 })
@@ -48,6 +51,6 @@ export default configureStore({
    }
 }) 
 
-let { actions: { addCount, msCount }, reducer } = cart;
+let { actions: { addCount, msCount, addItem }, reducer } = cart;
 
-export { addCount, msCount , productInfo };
+export { addCount, msCount, addItem , productInfo };
