@@ -31,6 +31,7 @@ let cart = createSlice({
   ],
   reducers : {
     addCount(state, action){
+      console.log(state, action);
       state[action.payload].count++
     },
     msCount(state, action){

@@ -6,11 +6,13 @@ function Detail(props) {
 	const { id } = useParams();
 	let [ tabClass , setTabClass ] = useState('type01');
 	let 찾은상품 = props.shoes.find((x) => x.id == id );
-	console.log(props.shoes);
+	let [recentItem, setRecentItem] = useState('');
+	console.log(찾은상품);
 
 	// 랜더링 됐을 때
 	useEffect(() => {
-		
+		localStorage.setItem('최근본상품',process.env.PUBLIC_URL + "/product/img_prd_dt" + id + ".webp");
+		setRecentItem(localStorage.getItem('최근본상품'));
 	})
 
 	// mount 됐을 때 
@@ -53,6 +55,7 @@ function Detail(props) {
 			</div>
 
 			<Tabs className={tabClass} defualt={0}></Tabs>
+
 		</>
 	)
 }

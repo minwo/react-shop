@@ -20,6 +20,13 @@ function Main(){
 		console.log(prdCount)
 	}
 
+	let [recentItem, setRecentItem] = useState('');
+
+	// 랜더링 됐을 때
+	useEffect(() => {
+		setRecentItem(localStorage.getItem('최근본상품'));
+	})
+
 	// const moreBtn = async () => {
 	// 	await axios.get("https://codingapple1.github.io/shop/data" + dataPage + ".json")
 	// 	.then((result) => {
@@ -43,6 +50,9 @@ function Main(){
 				<Cardlist shoes={shoes} prdCount={prdCount}/>
 			</div>
 			<button onClick={moreBtn}>더 보기</button>
+
+			<div>최근본상품</div>
+			<img src={recentItem} alt="" />
 		</>
 	)
 }
