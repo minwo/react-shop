@@ -13,7 +13,6 @@ function Main(){
 
 	let [shoes, setShoes] = useState(state.productInfo);
 	let [prdCount, setCount ] = useState(3);
-	console.log(prdCount);
 
 	const moreBtn = () => {
 		prdCount = setCount( prdCount + 3);
@@ -24,7 +23,7 @@ function Main(){
 
 	// 랜더링 됐을 때
 	useEffect(() => {
-		setRecentItem(localStorage.getItem('최근본상품'));
+		setRecentItem(JSON.parse(localStorage.getItem('최근본상품')));
 	})
 
 	// const moreBtn = async () => {
@@ -51,8 +50,10 @@ function Main(){
 			</div>
 			<button onClick={moreBtn}>더 보기</button>
 
-			<div>최근본상품</div>
-			<img src={recentItem} alt="" />
+			<div className="quick-menu">
+				<div>최근본상품</div>
+				<img src={recentItem} alt="" />
+			</div>
 		</>
 	)
 }

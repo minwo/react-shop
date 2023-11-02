@@ -11,7 +11,8 @@ function Detail(props) {
 
 	// 랜더링 됐을 때
 	useEffect(() => {
-		localStorage.setItem('최근본상품',process.env.PUBLIC_URL + "/product/img_prd_dt" + id + ".webp");
+		localStorage.setItem('최근본상품',JSON.stringify( process.env.PUBLIC_URL + "/product/img_prd_dt" + id + ".webp" ));
+		console.log(recentItem);
 		setRecentItem(localStorage.getItem('최근본상품'));
 	})
 

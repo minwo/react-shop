@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import './App.scss';
 import { Route, Routes, link, useNavigate, Outlet } from 'react-router-dom';
@@ -16,6 +16,10 @@ function App() {
 	})
 
 	let [shoes, setShoes] = useState(state.productInfo);
+
+	useEffect(() => {
+		localStorage.setItem('최근본상품', JSON.stringify( [] ))
+	},[])
 
   return (
     <div className="App">
